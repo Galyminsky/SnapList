@@ -13,12 +13,22 @@ roomKtx = "2.6.1"
 kotlinKspVersion = "1.9.21-1.0.15"
 roomCompiler = "2.6.1"
 roomRuntime = "2.6.1"
+daggerHiltVersion = "2.44"
+hiltAndroid = "2.49"
+hiltCompiler = "2.44"
+hiltCompilerVersion = "1.2.0"
+hiltNavigationCompose = "1.2.0"
 
 [libraries]
 
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltCompiler" }
+androidx-hilt-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltCompilerVersion" }
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -40,3 +50,4 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
 kotlinKsp = { id = "com.google.devtools.ksp", version.ref = "kotlinKspVersion" }
+daggerHilt = { id = "com.google.dagger.hilt.android", version.ref = "daggerHiltVersion" }

@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.kotlinKsp)
+    alias(libs.plugins.daggerHilt)
 }
 
 android {
@@ -72,4 +73,10 @@ dependencies {
     implementation (libs.room.ktx)
     implementation (libs.androidx.room.runtime)
     ksp (libs.androidx.room.compiler)
+
+    //DAGGER HILT
+    implementation (libs.hilt.android)
+    ksp (libs.hilt.compiler)
+    implementation (libs.androidx.hilt.navigation.compose)
+    ksp (libs.androidx.hilt.hilt.compiler)
 }
