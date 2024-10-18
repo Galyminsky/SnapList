@@ -70,17 +70,20 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     // ROOM
-    implementation (libs.room.ktx)
-    implementation (libs.androidx.room.runtime)
-    ksp (libs.androidx.room.compiler)
+    implementation(libs.room.ktx)
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
 
     //DAGGER HILT
-    implementation (libs.hilt.android)
-    ksp (libs.hilt.compiler)
-    implementation (libs.androidx.hilt.navigation.compose)
-    ksp (libs.androidx.hilt.hilt.compiler)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+    ksp(libs.androidx.hilt.hilt.compiler)
 
     //COMPOSE DEPENDENCIES
-    implementation (libs.androidx.lifecycle.viewmodel.compose)
-    implementation (libs.androidx.navigation.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.navigation.compose)
+
+    //DATA STORE
+    implementation(libs.androidx.datastore.preferences)
 }
