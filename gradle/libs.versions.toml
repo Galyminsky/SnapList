@@ -22,8 +22,8 @@ lifecycleRunKtx = "2.8.4"
 navigationCompose = "2.7.7"
 datastorePreferences = "1.1.1"
 
-[libraries]
 
+[libraries]
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
