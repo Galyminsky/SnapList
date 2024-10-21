@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
             SnapListTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Repository and RepoImpl",
+                        name = "AppModule",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
