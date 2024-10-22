@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
             SnapListTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "AppModule_2",
+                        name = "App Lisander",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }

@@ -2,7 +2,7 @@ package galyaminsky.dev.snaplist.data
 
 import kotlinx.coroutines.flow.Flow
 
-class NoteRepoImpl (private val dao: NoteDao) : NoteRepository {
+class NoteRepoImpl(private val dao: NoteDao) : NoteRepository {
 
     override suspend fun insertItem(item: NoteItem) {
         dao.insertItem(item)
