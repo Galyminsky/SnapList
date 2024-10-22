@@ -14,12 +14,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
 import galyaminsky.dev.snaplist.R
+import galyaminsky.dev.snaplist.navigation.NavigationGraph
+import galyaminsky.dev.snaplist.shopping_list_screen.ShoppingListScreen
 import galyaminsky.dev.snaplist.ui.theme.PalletOne_PurpleLight
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MainScreen() {
+    val navController = rememberNavController()
     Scaffold(
         floatingActionButton = {
             Box(
@@ -44,10 +48,10 @@ fun MainScreen() {
             }
         },
         bottomBar = {
-            BottomNav()
+            BottomNav(navController)
         },
         floatingActionButtonPosition = FabPosition.Center
     ) {
-
+        NavigationGraph(navController)
     }
 }
