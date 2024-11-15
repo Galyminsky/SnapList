@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import galyaminsky.dev.snaplist.data.ShoppingListItem
 import galyaminsky.dev.snaplist.data.ShoppingListRepository
+import galyaminsky.dev.snaplist.dialog.DialogEvent
 import galyaminsky.dev.snaplist.utils.DialogController
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -14,6 +15,8 @@ import javax.inject.Inject
 class ShoppingListViewModel @Inject constructor(
     private val repository: ShoppingListRepository
 ) : ViewModel(), DialogController {
+
+    private val list = repository.getAllItems()
 
     private var listItem: ShoppingListItem? = null
 
@@ -48,10 +51,40 @@ class ShoppingListViewModel @Inject constructor(
 
             is ShoppingListEvent.OnShowEditDialog -> {
                 listItem = event.item
+                openDialog.value = true
+                editTableText.value = listItem?.name ?: ""
+                dialogTitle.value = "List Name: "
+                showEditTableText.value = true
             }
 
             is ShoppingListEvent.OnShowDeleteDialog -> {
+                listItem = event.item
+                openDialog.value = true
+                dialogTitle.value = "Delete this Item?"
+                showEditTableText.value = false
+            }
+        }
+    }
 
+    fun onDialogEvent(event: DialogEvent) {
+        when (event) {
+            is DialogEvent.OnTextChange -> {
+                editTableText.value = event.text
+            }
+
+            is DialogEvent.OnCancel -> {
+                openDialog.value = false
+            }
+
+            is DialogEvent.OnConfirm -> {
+                if (showEditTableText.value) {
+                    onEvent(ShoppingListEvent.OnItemSave)
+                } else {
+                    viewModelScope.launch {
+                        listItem?.let { repository.deleteItem(it) }
+                    }
+                }
+                openDialog.value = false
             }
         }
     }
