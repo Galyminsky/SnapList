@@ -16,6 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
 import galyaminsky.dev.snaplist.R
+import galyaminsky.dev.snaplist.dialog.MainDialog
 import galyaminsky.dev.snaplist.navigation.NavigationGraph
 import galyaminsky.dev.snaplist.shopping_list_screen.ShoppingListScreen
 import galyaminsky.dev.snaplist.ui.theme.PalletOne_PurpleLight
@@ -53,5 +54,6 @@ fun MainScreen() {
         floatingActionButtonPosition = FabPosition.Center
     ) {
         NavigationGraph(navController)
+
     }
 }

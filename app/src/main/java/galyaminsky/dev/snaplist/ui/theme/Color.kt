@@ -15,3 +15,4 @@ val LightText = Color(0xFF3A3A3A)
 
 
 val PalletOne_PurpleLight = Color(0xFF2196F3)
+val LightWhite = Color(0xFFF0F0F0)
