@@ -7,7 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import galyaminsky.dev.snaplist.data.ShoppingListItem
 import galyaminsky.dev.snaplist.data.ShoppingListRepository
 import galyaminsky.dev.snaplist.dialog.DialogEvent
-import galyaminsky.dev.snaplist.utils.DialogController
+import galyaminsky.dev.snaplist.dialog.DialogController
 import galyaminsky.dev.snaplist.utils.UiEvent
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -72,7 +72,7 @@ class ShoppingListViewModel @Inject constructor(
         }
     }
 
-    fun onDialogEvent(event: DialogEvent) {
+    override fun onDialogEvent(event: DialogEvent) {
         when (event) {
             is DialogEvent.OnTextChange -> {
                 editTableText.value = event.text
