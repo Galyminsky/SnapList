@@ -9,6 +9,8 @@ lifecycleRuntimeKtx = "2.8.6"
 activityCompose = "1.9.3"
 composeBom = "2024.10.00"
 
+
+materialVersion = "1.7.5"
 roomKtx = "2.6.1"
 kotlinKspVersion = "1.9.21-1.0.15"
 roomCompiler = "2.6.1"
@@ -19,11 +21,16 @@ hiltCompiler = "2.51.1"
 hiltCompilerVersion = "1.2.0"
 hiltNavigationCompose = "1.2.0"
 lifecycleRunKtx = "2.8.4"
-navigationCompose = "2.7.7"
+navigationCompose = "2.8.3"
 datastorePreferences = "1.1.1"
+material = "1.12.0"
+conslayoutVersion = "1.0.1"
+material3 = "1.2.0"
 
 
 [libraries]
+
+androidx-material = { module = "androidx.compose.material:material", version.ref = "materialVersion" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
@@ -35,6 +42,8 @@ androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-com
 
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleRunKtx" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+
+constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "conslayoutVersion" }
 
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 
@@ -52,6 +61,7 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
