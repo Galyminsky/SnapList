@@ -8,6 +8,9 @@ import galyaminsky.dev.snaplist.data.ShoppingListItem
 import galyaminsky.dev.snaplist.data.ShoppingListRepository
 import galyaminsky.dev.snaplist.dialog.DialogEvent
 import galyaminsky.dev.snaplist.utils.DialogController
+import galyaminsky.dev.snaplist.utils.UiEvent
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,6 +20,9 @@ class ShoppingListViewModel @Inject constructor(
 ) : ViewModel(), DialogController {
 
     private val list = repository.getAllItems()
+
+    private val _uiEvent = Channel<UiEvent>()
+    private val uiEvent = _uiEvent.receiveAsFlow()
 
     private var listItem: ShoppingListItem? = null
 
@@ -46,7 +52,7 @@ class ShoppingListViewModel @Inject constructor(
             }
 
             is ShoppingListEvent.OnItemClick -> {
-
+                sendUiEvent(UiEvent.Navigate(event.route))
             }
 
             is ShoppingListEvent.OnShowEditDialog -> {
@@ -86,6 +92,12 @@ class ShoppingListViewModel @Inject constructor(
                 }
                 openDialog.value = false
             }
+        }
+    }
+
+    private fun sendUiEvent(event: UiEvent) {
+        viewModelScope.launch {
+            _uiEvent.send(event)
         }
     }
 }
