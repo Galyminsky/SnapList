@@ -86,6 +86,7 @@ dependencies {
     //COMPOSE DEPENDENCIES
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.constraintlayout.compose)
 
     //DATA STORE
     implementation(libs.androidx.datastore.preferences)
