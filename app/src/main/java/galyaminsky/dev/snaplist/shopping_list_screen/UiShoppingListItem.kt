@@ -20,7 +20,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -32,6 +31,7 @@ import galyaminsky.dev.snaplist.ui.theme.PalletOne_PurpleLight
 import galyaminsky.dev.snaplist.ui.theme.Pink80
 import galyaminsky.dev.snaplist.ui.theme.Purple80
 import galyaminsky.dev.snaplist.ui.theme.PurpleGrey80
+import galyaminsky.dev.snaplist.utils.Routes
 
 
 @Composable
@@ -53,7 +53,7 @@ fun UiShoppingListItem(
                 end.linkTo(parent.end)
             }
             .clickable {
-
+                onEvent(ShoppingListEvent.OnItemClick(Routes.ADD_ITEM))
             }
         ) {
             Column(

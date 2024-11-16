@@ -6,8 +6,8 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import galyaminsky.dev.snaplist.data.ShoppingListItem
 import galyaminsky.dev.snaplist.data.ShoppingListRepository
-import galyaminsky.dev.snaplist.dialog.DialogEvent
 import galyaminsky.dev.snaplist.dialog.DialogController
+import galyaminsky.dev.snaplist.dialog.DialogEvent
 import galyaminsky.dev.snaplist.utils.UiEvent
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -22,7 +22,7 @@ class ShoppingListViewModel @Inject constructor(
     val list = repository.getAllItems()
 
     private val _uiEvent = Channel<UiEvent>()
-    private val uiEvent = _uiEvent.receiveAsFlow()
+    val uiEvent = _uiEvent.receiveAsFlow()
 
     private var listItem: ShoppingListItem? = null
 

@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,21 +23,35 @@ import galyaminsky.dev.snaplist.ui.theme.PalletOne_PurpleLight
 import galyaminsky.dev.snaplist.ui.theme.Purple40
 import galyaminsky.dev.snaplist.ui.theme.Purple80
 import galyaminsky.dev.snaplist.ui.theme.PurpleGrey80
+import galyaminsky.dev.snaplist.utils.UiEvent
 
 
 @Composable
 fun ShoppingListScreen(
-    viewModel: ShoppingListViewModel = hiltViewModel(),
+    viewModel: ShoppingListViewModel = hiltViewModel(), onNavigate: (String) -> Unit
 ) {
     val itemsList = viewModel.list.collectAsState(initial = emptyList())
+    LaunchedEffect(key1 = true) {
+        viewModel.uiEvent.collect { uiEven ->
+            when (uiEven) {
+                is UiEvent.Navigate -> {
+                    onNavigate(uiEven.route)
+                }
 
-    LazyColumn (
+                else -> {
+
+                }
+            }
+        }
+    }
+
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White),
         contentPadding = PaddingValues(bottom = 100.dp)
     ) {
-        items(itemsList.value) { item ->  
+        items(itemsList.value) { item ->
             UiShoppingListItem(item) { event ->
                 viewModel.onEvent(event)
             }
