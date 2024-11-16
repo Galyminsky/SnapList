@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import galyaminsky.dev.snaplist.R
+import galyaminsky.dev.snaplist.data.ShoppingListItem
 import galyaminsky.dev.snaplist.ui.theme.DarkText
 import galyaminsky.dev.snaplist.ui.theme.LightText
 import galyaminsky.dev.snaplist.ui.theme.PalletOne_PurpleLight
@@ -31,9 +32,11 @@ import galyaminsky.dev.snaplist.ui.theme.Pink80
 import galyaminsky.dev.snaplist.ui.theme.Purple80
 import galyaminsky.dev.snaplist.ui.theme.PurpleGrey80
 
-@Preview(showBackground = true)
+
 @Composable
-fun UiShoppingListItem() {
+fun UiShoppingListItem(
+    item: ShoppingListItem
+) {
     ConstraintLayout(
         modifier = Modifier.padding(
             start = 3.dp, top = 18.dp, end = 3.dp
@@ -42,6 +45,7 @@ fun UiShoppingListItem() {
         val (card, deleteButton, editButton, counter) = createRefs()
         Card(modifier = Modifier
             .fillMaxWidth()
+            .padding(8.dp)
             .constrainAs(card) {
                 top.linkTo(parent.top)
                 start.linkTo(parent.start)
@@ -53,7 +57,7 @@ fun UiShoppingListItem() {
                     .padding(8.dp)
             ) {
                 Text(
-                    text = "List 1",
+                    text = item.name,
                     style = TextStyle(
                         color = DarkText,
                         fontWeight = FontWeight.Bold,
@@ -61,7 +65,7 @@ fun UiShoppingListItem() {
                     )
                 )
                 Text(
-                    text = "12/12/2024 15:57",
+                    text = item.time,
                     style = TextStyle(
                         color = LightText,
                         fontSize = 14.sp
@@ -129,7 +133,7 @@ fun UiShoppingListItem() {
                 .padding(end = 5.dp)
         ) {
             Text(
-                text = "15/5",
+                text = "${item.allItemCount} / ${item.allSelectedItemCount}",
                 modifier = Modifier
                     .background(Purple80)
                     .padding(top = 5.dp, bottom = 5.dp, start = 3.dp, end = 3.dp),
