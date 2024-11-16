@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
 import galyaminsky.dev.snaplist.main_screen.MainScreen
+import galyaminsky.dev.snaplist.navigation.MainNavigationGraph
 import galyaminsky.dev.snaplist.ui.theme.SnapListTheme
 
 @AndroidEntryPoint
@@ -25,7 +26,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             SnapListTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) {
-                    MainScreen()
+                    MainNavigationGraph()
                 }
             }
         }

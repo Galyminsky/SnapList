@@ -6,8 +6,8 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import galyaminsky.dev.snaplist.data.ShoppingListItem
 import galyaminsky.dev.snaplist.data.ShoppingListRepository
-import galyaminsky.dev.snaplist.dialog.DialogEvent
 import galyaminsky.dev.snaplist.dialog.DialogController
+import galyaminsky.dev.snaplist.dialog.DialogEvent
 import galyaminsky.dev.snaplist.utils.UiEvent
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -19,25 +19,26 @@ class ShoppingListViewModel @Inject constructor(
     private val repository: ShoppingListRepository
 ) : ViewModel(), DialogController {
 
-    private val list = repository.getAllItems()
+    val list = repository.getAllItems()
 
     private val _uiEvent = Channel<UiEvent>()
-    private val uiEvent = _uiEvent.receiveAsFlow()
+    val uiEvent = _uiEvent.receiveAsFlow()
 
     private var listItem: ShoppingListItem? = null
 
-    override var dialogTitle = mutableStateOf("List Name")
+    override var dialogTitle = mutableStateOf("")
         private set
     override var editTableText = mutableStateOf("")
         private set
-    override var openDialog = mutableStateOf(true)
+    override var openDialog = mutableStateOf(false)
         private set
-    override var showEditTableText = mutableStateOf(true)
+    override var showEditTableText = mutableStateOf(false)
         private set
 
     fun onEvent(event: ShoppingListEvent) {
         when (event) {
             is ShoppingListEvent.OnItemSave -> {
+                if (editTableText.value.isEmpty()) return
                 viewModelScope.launch {
                     repository.insertItem(
                         ShoppingListItem(
