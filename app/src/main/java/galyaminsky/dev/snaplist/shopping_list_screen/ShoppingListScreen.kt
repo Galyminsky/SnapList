@@ -37,8 +37,11 @@ fun ShoppingListScreen(
         contentPadding = PaddingValues(bottom = 100.dp)
     ) {
         items(itemsList.value) { item ->  
-            UiShoppingListItem(item)
+            UiShoppingListItem(item) { event ->
+                viewModel.onEvent(event)
+            }
         }
     }
+    MainDialog(viewModel)
 
 }

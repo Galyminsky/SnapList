@@ -1,6 +1,7 @@
 package galyaminsky.dev.snaplist.shopping_list_screen
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -35,7 +36,7 @@ import galyaminsky.dev.snaplist.ui.theme.PurpleGrey80
 
 @Composable
 fun UiShoppingListItem(
-    item: ShoppingListItem
+    item: ShoppingListItem, onEvent: (ShoppingListEvent) -> Unit
 ) {
     ConstraintLayout(
         modifier = Modifier.padding(
@@ -50,7 +51,11 @@ fun UiShoppingListItem(
                 top.linkTo(parent.top)
                 start.linkTo(parent.start)
                 end.linkTo(parent.end)
-            }) {
+            }
+            .clickable {
+
+            }
+        ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -82,7 +87,9 @@ fun UiShoppingListItem(
             }
         }
         IconButton(
-            onClick = { },
+            onClick = {
+                onEvent(ShoppingListEvent.OnShowDeleteDialog(item))
+            },
             modifier = Modifier
                 .constrainAs(deleteButton) {
                     top.linkTo(card.top)
@@ -103,7 +110,9 @@ fun UiShoppingListItem(
                 )
         }
         IconButton(
-            onClick = { },
+            onClick = {
+                onEvent(ShoppingListEvent.OnShowEditDialog(item))
+            },
             modifier = Modifier
                 .constrainAs(editButton) {
                     top.linkTo(card.top)
