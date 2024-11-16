@@ -49,10 +49,11 @@ fun MainDialog(dialogController: DialogController) {
                         label = {
                             Text(text = "List Name")
                         },
+                        modifier = Modifier,
                         colors = TextFieldDefaults.textFieldColors(
                             backgroundColor = LightWhite,
                             focusedIndicatorColor = Color.Transparent,
-                            unfocusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent
                         ),
                         shape = RoundedCornerShape(10.dp),
                         singleLine = true
