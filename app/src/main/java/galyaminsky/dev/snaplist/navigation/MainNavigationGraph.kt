@@ -1,5 +1,6 @@
 package galyaminsky.dev.snaplist.navigation
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -14,7 +15,7 @@ fun MainNavigationGraph() {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = Routes.MAIN_SCREEN) {
-        composable(Routes.ADD_ITEM) {
+        composable(Routes.ADD_ITEM + "/{listId}") {
             AddItemScreen()
         }
         composable(Routes.NEW_NOTE) {
