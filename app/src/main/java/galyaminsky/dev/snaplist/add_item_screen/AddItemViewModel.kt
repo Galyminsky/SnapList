@@ -58,5 +58,4 @@ class AddItemViewModel @Inject constructor(
             }
         }
     }
-
 }
